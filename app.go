@@ -51,7 +51,7 @@ func (app *KVStoreApplication) CheckTx(req abcitypes.RequestCheckTx) abcitypes.R
 }
 
 func (app *KVStoreApplication) Commit() abcitypes.ResponseCommit {
-	app.currentBatch.Commit()
+	_ = app.currentBatch.Commit()
 	return abcitypes.ResponseCommit{Data: []byte{}}
 }
 
@@ -79,11 +79,11 @@ func (app *KVStoreApplication) Query(reqQuery abcitypes.RequestQuery) (resQuery 
 	return
 }
 
-func (KVStoreApplication) InitChain(req abcitypes.RequestInitChain) abcitypes.ResponseInitChain {
+func (KVStoreApplication) InitChain(req abcitypes.RequestInitChain) abcitypes.ResponseInitChain { //nolint:gocritic
 	return abcitypes.ResponseInitChain{}
 }
 
-func (app *KVStoreApplication) BeginBlock(req abcitypes.RequestBeginBlock) abcitypes.ResponseBeginBlock {
+func (app *KVStoreApplication) BeginBlock(req abcitypes.RequestBeginBlock) abcitypes.ResponseBeginBlock { //nolint:gocritic
 	app.currentBatch = app.db.NewTransaction(true)
 	return abcitypes.ResponseBeginBlock{}
 }
