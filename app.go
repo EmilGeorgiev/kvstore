@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+
 	"github.com/dgraph-io/badger"
 	abcitypes "github.com/tendermint/tendermint/abci/types"
 )
